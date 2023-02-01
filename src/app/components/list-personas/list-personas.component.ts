@@ -1,4 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, ViewChild } from '@angular/core';
+import { MatPaginator } from '@angular/material/paginator';
+import { MatTableDataSource } from '@angular/material/table';
 
 export interface PeriodicElement {
   name: string;
@@ -18,7 +20,14 @@ const ELEMENT_DATA: PeriodicElement[] = [
   {position: 8, name: 'Oxygen', weight: 15.9994, symbol: 'O'},
   {position: 9, name: 'Fluorine', weight: 18.9984, symbol: 'F'},
   {position: 10, name: 'Neon', weight: 20.1797, symbol: 'Ne'},
+  {position: 11, name: 'Carbon', weight: 12.0107, symbol: 'C'},
+  {position: 12, name: 'Nitrogen', weight: 14.0067, symbol: 'N'},
+  {position: 13, name: 'Oxygen', weight: 15.9994, symbol: 'O'},
+  {position: 14, name: 'Fluorine', weight: 18.9984, symbol: 'F'},
+  {position: 15, name: 'Neon', weight: 20.1797, symbol: 'Ne'},
 ];
+
+
 
 @Component({
   selector: 'app-list-personas',
@@ -27,5 +36,11 @@ const ELEMENT_DATA: PeriodicElement[] = [
 })
 export class ListPersonasComponent {
   displayedColumns: string[] = ['position', 'name', 'weight', 'symbol'];
-  dataSource = ELEMENT_DATA;
+  dataSource =  new MatTableDataSource<PeriodicElement>(ELEMENT_DATA);
+
+  @ViewChild(MatPaginator) paginator!: MatPaginator;
+
+  ngAfterViewInit() {
+    this.dataSource.paginator = this.paginator;
+  }
 }
