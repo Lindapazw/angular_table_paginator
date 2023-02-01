@@ -6,6 +6,11 @@ import { ListPersonasComponent } from './components/list-personas/list-personas.
 import { AgregarEdiarPersonaComponent } from './components/agregar-ediar-persona/agregar-ediar-persona.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
+// angular material
+
+import { MatSlideToggleModule } from '@angular/material/slide-toggle';
+import {MatToolbarModule} from '@angular/material/toolbar';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -14,7 +19,9 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
   ],
   imports: [
     BrowserModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    MatSlideToggleModule,
+    MatToolbarModule
   ],
   providers: [],
   bootstrap: [AppComponent]
